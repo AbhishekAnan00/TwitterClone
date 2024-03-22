@@ -2,7 +2,12 @@ import React from "react";
 import { IoArrowBackSharp } from "react-icons/io5";
 import Avatar from "react-avatar";
 import { Link } from "react-router-dom";
+import useGetUser from "../Hooks/useGetUser";
+import { useSelector } from "react-redux";
+
 const Profile = () => {
+  // const { user, profile } = useSelector((store) => store.user);
+  // useGetUser(user?._id);
   return (
     <div className=" border-zinc-700 border-l-2 border-r-2 w-[50%] h-[100vh]">
       <div className="flex gap-10 pl-8 pt-2 border-zinc-700 border-b-2 cursor-pointer">
@@ -12,7 +17,7 @@ const Profile = () => {
           </Link>
         </div>
         <div className="flex flex-col">
-          <p className="text-2xl font-extrabold">Nilesh Soni</p>
+          <p className="text-2xl font-extrabold">Nilesh</p>
           <p className="text-zinc-500">9 Posts</p>
         </div>
       </div>
@@ -36,8 +41,8 @@ const Profile = () => {
           </button>
         </div>
         <div className="flex flex-col px-8 py-6">
-          <p className="font-extrabold text-2xl">Nilesh Soni</p>
-          <p className="text-zinc-500 text-xl">@nilshsoni_7</p>
+          <p className="font-extrabold text-2xl">Nilesh</p>
+          <p className="text-zinc-500 text-xl">@Nilesh7</p>
           <p className="py-6 text-xl font-semibold">
             A passionate software engineer from india.
           </p>

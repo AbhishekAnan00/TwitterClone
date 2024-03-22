@@ -1,5 +1,5 @@
 import { Tweet } from "../Model/TweetSchema.js";
-
+import { User } from "../Model/UserSchema.js";
 export const CreateTweet = async (req, res) => {
   try {
     const { description, id } = req.body;
@@ -60,6 +60,25 @@ export const LikeAndDislike = async (req,res) => {
         message:"user liked your tweet"
       })
     }
+  } catch (error) {
+    console.error("error :", error);
+    return res.status(500).json({
+      message: "Internal server error",
+      success: false,
+    });
+  }
+}
+export const GetTweets = async (req,res) => {
+  try {
+    const id = req.params.id;
+    const LoggedInUser = await User.findById(id);
+    const LoggedInUserTweets = await Tweet.find({userId:id});
+    const FollowingUserTweet = await Promise.all(LoggedInUser.following.map((OtherUserId) => {
+      return Tweet.find({userId:OtherUserId})
+    }))
+    return res.status(200).json({
+      tweets:LoggedInUserTweets.concat(...FollowingUserTweet)
+    })
   } catch (error) {
     console.error("error :", error);
     return res.status(500).json({

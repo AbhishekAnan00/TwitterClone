@@ -77,6 +77,7 @@ export const Login = async (req, res) => {
     res.cookie("token", token, { expiresIn: "3d", httpOnly: true });
     return res.status(200).json({
       message: `Welcome back ${user.name}!`,
+      user,
       success: true,
     });
   } catch (error) {
@@ -164,7 +165,7 @@ export const Follow = async (req,res) => {
     const userId = req.params.id 
     const LoggedInUser = await User.findById(LoggedInUserId) //nilesh
     const user = await User.findById(userId) //abhishek
-    if(user.followers.includes(LoggedInUserId)){
+    if(!user.followers.includes(LoggedInUserId)){
       await user.updateOne({$push:{followers:LoggedInUserId}})
       await LoggedInUser.updateOne({$push:{following:userId}})
     }else{
@@ -177,6 +178,37 @@ export const Follow = async (req,res) => {
       success:true
     })
   } catch (error) {
-    
+    console.error("error :", error);
+    return res.status(500).json({
+      message: "Internal server error",
+      success: false,
+    });
   }
 } 
+
+export const UnFollow = async (req,res) => {
+  try {
+    const LoggedInUserId = req.body.id 
+    const userId = req.params.id 
+    const LoggedInUser = await User.findById(LoggedInUserId) //nilesh
+    const user = await User.findById(userId) //abhishek
+    if(!LoggedInUser.following.includes(userId)){
+      await user.updateOne({$pull:{followers:LoggedInUserId}})
+      await LoggedInUser.updateOne({$pull:{following:userId}})
+    }else{
+      return res.status(400).json({
+        message:"user has not followed yet"
+      })
+    }
+    return res.status(200).json({
+      message:`${LoggedInUser.name} unfollow to ${user.name}`,
+      success:true
+    })
+  } catch (error) {
+    console.error("error :", error);
+    return res.status(500).json({
+      message: "Internal server error",
+      success: false,
+    });
+  }
+}
