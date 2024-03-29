@@ -28,7 +28,7 @@ const Login = () => {
         );
         dispatch(getUser(res?.data?.user))
         if (res.data.success) {
-          window.location.href = "/";
+          window.location.href = "/home";
           alert(res.data.message);
         }
       } catch (error) {

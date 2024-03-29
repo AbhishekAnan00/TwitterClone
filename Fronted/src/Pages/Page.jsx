@@ -13,13 +13,13 @@ const Page = () => {
   useOtherUser(user?._id)
   useGetTweet(user?._id)
   const location = useLocation();
-  const isLoginPage = location.pathname === '/login';
+  const isLoginPage = location.pathname === '/';
   return (
     <>
     <div className='flex justify-between mx-auto pl-10 pr-10'>
     {!isLoginPage && <LeftBar/>}
         <Routes>
-          <Route path="/" element={<Feed/>} />
+          <Route path="/home" element={<Feed/>} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
     {!isLoginPage && <RightBar otherUser={otherUser}/>}
