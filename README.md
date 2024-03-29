@@ -8,11 +8,13 @@ Welcome to our Twitter-like application built with the MERN stack! Follow these 
 - MongoDB installed locally or accessible remotely
 
    ## Features
+- **Tech Used:**  Developed a Twitter clone application using the MERN (MongoDB, Express.js, React.js, Node.js) stack, showcasing proficiency in full-stack web development.
 
-- **Responsive Design:** It is optimized for various screen sizes, ensuring a seamless user experience across devices.
-- **Navigation:** The navigation bar provides easy access to different sections of the twitter, including profile and other user profile.
-- **Dynamic Content:** Each section of the twitter displays relevant messages, including tweets, post, profile, follow, authenticate and more.
-- **Routing:** React Router is used to handle client-side routing, enabling smooth navigation between different pages without page reloads.
+- **Responsive Design:** Designed and implemented the frontend user interface with React.js, focusing on responsiveness, accessibility, and modern design principles.
+
+- **Backend:**  Engineered RESTful API services using Node.js and Express.js to handle data interactions between the frontend and MongoDB database.
+
+- **Dynamic Content:** Integrated MongoDB as the database solution to efficiently store user data, including tweets, post, profile, follow, authenticate and more, ensuring scalability and performance.
 
 ## Usage
 
