@@ -31,7 +31,6 @@ const Login = () => {
           window.location.href = "/";
           alert(res.data.message);
         }
-        console.log(res);
       } catch (error) {
         alert(error.response.data.message);
         console.error("error :", error);
@@ -73,13 +72,15 @@ const Login = () => {
           <div className="my-5">
             <h1 className="font-extrabold text-4xl">Happening now</h1>
           </div>
-          <p className="text-2xl font-semibold py-4">
-            {login ? "signup" : "login"}
-          </p>
+          <h1 className="text-2xl font-semibold py-4">
+
+
+            {!login ? "signup" : "login"}
+          </h1>
           <form onSubmit={handleOnSubmit} className="flex flex-col">
-            {login && (
+            {!login && (
               <>
-                <input
+                <input 
                   type="text"
                   placeholder="Name"
                   value={name}
@@ -111,15 +112,15 @@ const Login = () => {
               className="border-sky-600 border-2 rounded-full p-2 outline-none bg-black my-2"
             />
             <button className="text-white font-semibold bg-sky-600 hover:bg-black hover:border-sky-600 hover:border-2 py-2 mt-4 rounded-full text-lg">
-              {login ? "Create Account" : "login"}
+              {!login ? "Create Account" : "login"}
             </button>
             <h1 className="my-2 text-zinc-500">
-              {login ? "Already have an account !" : "Don't have an account ?"}
+              {login ? "Don't have an account ?" : "Already have an account !"}
               <span
                 onClick={handleOnClick}
                 className="text-sky-600 mx-3 font-semibold cursor-pointer"
               >
-                {login ? "Login" : "signup"}
+                {login ? "signup" : "login"}
               </span>
             </h1>
           </form>

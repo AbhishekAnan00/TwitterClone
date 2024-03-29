@@ -12,12 +12,13 @@ const useGetUser = (id) => {
         const res = await axios.get(`${USER_API_END_POINT}/getprofile/${id}`, {
           withCredentials: true,
         });
+        console.log(res);
         dispatch(getProfile(res.data.user));
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
       }
     };
     fetchProfile();
-  }, []);
+  }, [id, dispatch]);
 };
 export default useGetUser;

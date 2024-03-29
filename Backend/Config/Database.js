@@ -5,7 +5,7 @@ dotenv.config({
 });
 const DatabaseConnection = () => {
   mongoose
-    .connect(process.env.MONGO_URL , {
+    .connect(process.env.MONGO_URL ,  {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds

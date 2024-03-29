@@ -55,7 +55,7 @@ const Feed = () => {
           <div className="bg-sky-500 hover:bg-sky-600 text-center font-bold text-xl p-3 rounded-full w-24 cursor-pointer">Post</div>
         </div>
       </div>
-      <CreatePost/>
+      <CreatePost/> 
     </div>
   );
 };

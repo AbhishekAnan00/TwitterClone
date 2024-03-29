@@ -87,3 +87,21 @@ export const GetTweets = async (req,res) => {
     });
   }
 }
+export const GetFollwingTweet = async (req,res) => {
+  try {
+     const id = req.params.id;
+     const LoggedInUser = await User.findById(id);
+     const FollowingUserTweet = await Promise.all(LoggedInUser.following.map((OtherUserId) => {
+      return Tweet.find({userId:OtherUserId})
+    }));
+    return res.status(200).json({
+      tweets : [].concat(...FollowingUserTweet)
+    });
+  }catch(err) {
+   console.error(err);
+   return res.status(500).json({
+    message: "Internal server error",
+    success: false,
+  });
+  }
+}
